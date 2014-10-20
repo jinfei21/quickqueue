@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- For assistance related to logback-translator or configuration  -->
+<!-- files in general, please contact the logback user mailing list -->
+<!-- at http://www.qos.ch/mailman/listinfo/logback-user             -->
+<!--                                                                -->
+<!-- For professional support please see                            -->
+<!--    http://www.qos.ch/shop/products/professionalSupport         -->
+<!--                                                                -->
+<configuration>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- encoders are assigned the type
+         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+    <encoder>
+    <!-- 
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+     -->
+     <pattern>%date %level [%thread] %10logger [%file:%line] %msg%n</pattern>
+    </encoder>
+  </appender>
+  
+  <appender name="QuickQueueAppender" class="com.ctrip.quickqueue.appender.QuickQueueAppender">
+        <appId>920111</appId>
+        <serverIp>192.168.82.58</serverIp>
+        <serverPort>63100</serverPort>
+    </appender>
+
+  <root level="info">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="QuickQueueAppender"/>
+  </root>
+
+</configuration>
